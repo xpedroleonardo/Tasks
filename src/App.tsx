@@ -1,8 +1,16 @@
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import { GlobalStyle } from "./styles/global";
+
 function App() {
   return (
-    <>
-      <h1>Wello</h1>
-    </>
+    <BrowserRouter>
+      <Switch>
+        <GlobalStyle />
+        <Route path="/" exact component={Home} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
