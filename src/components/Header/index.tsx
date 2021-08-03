@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom";
 import { HeaderGrid } from "./styles";
 
 import chevronLeftImg from "../../assets/images/chevron-left.svg";
-import { Link } from "react-router-dom";
 
-function Header(title: string) {
+type HeaderProps = {
+  title: string;
+};
+
+function Header({ title }: HeaderProps) {
   return (
     <header>
       <div className="container">
