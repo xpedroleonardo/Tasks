@@ -29,6 +29,10 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
   }
 
+  details summary {
+    list-style: none;
+  }
+
   @media (max-width: 1080px) {
     html {
       font-size: 93.75%; /* 15px */
