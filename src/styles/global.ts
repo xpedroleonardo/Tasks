@@ -2,8 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --backgroud: #f0f2f5;
+    --body: #f0f2f5;
+    --background: #fcfdff;
     --border: #e1e3e5;
+    --text-gray: #5a5a66;
   }
 
   * {
@@ -17,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    background: var(--backgroud);
+    background: var(--body);
   }
 
   .container {

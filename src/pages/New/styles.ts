@@ -29,7 +29,7 @@ export const Main = styled.main`
     font-weight: 600;
     font-size: 2rem;
     line-height: 2.625rem;
-    color: #5a5a66;
+    color: var(--text-gray);
   }
 
   @media (max-width: 700px) {
@@ -52,14 +52,14 @@ export const Group = styled.div`
   padding-bottom: 20px;
 
   label {
-    color: #5a5a66;
+    color: var(--text-gray);
     font-weight: 500;
   }
 
   input {
-    color: #5a5a66;
+    color: var(--text-gray);
     width: 100%;
-    background: #fcfdff;
+    background: var(--background);
     border: 1px solid var(--border);
     border-radius: 4px;
 
@@ -69,12 +69,12 @@ export const Group = styled.div`
   }
 
   textarea {
-    color: #5a5a66;
+    color: var(--text-gray);
     width: 100%;
     height: 180px;
     resize: none;
 
-    background: #fcfdff;
+    background: var(--background);
     border: 1px solid var(--border);
     border-radius: 4px;
 
@@ -86,7 +86,7 @@ export const Group = styled.div`
 
 export const Collapse = styled.section`
   width: auto;
-  background: #fcfdff;
+  background: var(--background);
   height: fit-content;
   border: solid 1px var(--border);
   border-radius: 8px;
@@ -107,6 +107,7 @@ export const TitleCollapse = styled.summary`
     line-height: 24px;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--text-gray);
   }
 `;
 
@@ -125,11 +126,13 @@ export const DescriptionCollapse = styled.main`
     align-items: center;
     justify-content: flex-start;
     gap: 15px;
+    color: var(--text-gray);
   }
 
   p {
     line-height: 21px;
     margin-bottom: 16px;
     word-wrap: break-word;
+    color: var(--text-gray);
   }
 `;
