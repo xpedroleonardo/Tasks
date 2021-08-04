@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { FiChevronLeft } from "react-icons/fi";
 import { HeaderGrid } from "./styles";
+
+import chevronLeftImg from "../../assets/images/chevron-left.svg";
 
 type HeaderProps = {
   title: string;
@@ -12,7 +13,7 @@ function Header({ title }: HeaderProps) {
       <div className="container">
         <HeaderGrid>
           <Link to="/">
-            <FiChevronLeft height="24" width="24" color="#fff" />
+            <img src={chevronLeftImg} title="Voltar" alt="Voltar" />
           </Link>
           <h1>{title}</h1>
         </HeaderGrid>

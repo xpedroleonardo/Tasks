@@ -2,8 +2,8 @@ import { FormEvent } from "react";
 import Header from "../../components/Header";
 import Task from "../../components/Task";
 
-function New() {
-  function handleFormSubmitNew(event: FormEvent) {
+function Edit() {
+  function handleFormSubmitEdit(event: FormEvent) {
     event.preventDefault();
 
     const target = event.target as typeof event.target & {
@@ -20,10 +20,10 @@ function New() {
 
   return (
     <>
-      <Header title="Nova Task" />
-      <Task handleSubmitForm={handleFormSubmitNew} />
+      <Header title="Editar task" />
+      <Task handleSubmitForm={handleFormSubmitEdit} />
     </>
   );
 }
 
-export default New;
+export default Edit;

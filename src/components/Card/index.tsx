@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { FiTrash } from "react-icons/fi";
 
 import avatarImg from "../../assets/images/avatar.svg";
 import chesvronDownImg from "../../assets/images/chevron-down.svg";
@@ -41,17 +40,23 @@ function Card({ title, description }: CardProps) {
       <FooterCollapse>
         <div className="separator"></div>
         <section>
-          <div className="icon">
-            <FiTrash height="24" />
+          <div className="icon-group">
+            <img src={trashImg} draggable="false" alt="Task completa" />
           </div>
 
           <aside>
-            <div className="icon">
+            <div className="icon-group">
               <Link to="/edit">
-                <img src={editImg} draggable="false" alt="Editar task" />
+                <img
+                  src={editImg}
+                  className="icon"
+                  draggable="false"
+                  title="Editar task"
+                  alt="Editar task"
+                />
               </Link>
             </div>
-            <div className="icon">
+            <div className="icon-group">
               <img src={completeImg} draggable="false" alt="Task completa" />
             </div>
           </aside>

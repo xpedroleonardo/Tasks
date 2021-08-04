@@ -85,6 +85,7 @@ export const FooterCollapse = styled.footer`
     justify-content: space-between;
     height: 24px;
 
+    a,
     svg {
       height: 24px;
       width: 24px;
@@ -98,7 +99,7 @@ export const FooterCollapse = styled.footer`
   }
 
   section aside,
-  section .icon {
+  section .icon-group {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -31,6 +31,11 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--body);
   }
 
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
   .container {
     /* width: min(1440px, 90vw); */
     width: min(1240px, 90vw);
