@@ -7,7 +7,7 @@ export const HeaderGrid = styled.section`
   grid-template-columns: repeat(3, 1fr);
 
   a,
-  a img {
+  a svg {
     height: 1.5rem;
     width: 1.5rem;
   }

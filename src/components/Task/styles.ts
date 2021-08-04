@@ -144,6 +144,7 @@ export const DescriptionCollapse = styled.main`
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 15px;
     color: var(--text-gray);
   }

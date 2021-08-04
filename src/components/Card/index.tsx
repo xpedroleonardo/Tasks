@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FiTrash } from "react-icons/fi";
 
 import avatarImg from "../../assets/images/avatar.svg";
 import chesvronDownImg from "../../assets/images/chevron-down.svg";
@@ -41,7 +42,7 @@ function Card({ title, description }: CardProps) {
         <div className="separator"></div>
         <section>
           <div className="icon">
-            <img src={trashImg} draggable="false" alt="Excluir task" />
+            <FiTrash height="24" />
           </div>
 
           <aside>

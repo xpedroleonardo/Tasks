@@ -84,6 +84,11 @@ export const FooterCollapse = styled.footer`
     align-items: center;
     justify-content: space-between;
     height: 24px;
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
   }
 
   section span {
