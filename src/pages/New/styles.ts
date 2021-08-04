@@ -81,6 +81,25 @@ export const Group = styled.div`
     font-size: 1rem;
     line-height: 24px;
     padding: 13px 16px;
+
+    ::-webkit-scrollbar {
+      display: block;
+      width: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--text-gray);
+    }
+
+    ::-webkit-scrollbar-track-piece:start {
+      background: transparent;
+      margin-top: 20px;
+    }
+
+    ::-webkit-scrollbar-track-piece:end {
+      background: transparent;
+      margin-bottom: 20px;
+    }
   }
 `;
 
@@ -134,5 +153,31 @@ export const DescriptionCollapse = styled.main`
     margin-bottom: 16px;
     word-wrap: break-word;
     color: var(--text-gray);
+  }
+`;
+
+export const Button = styled.button`
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  border: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.9rem 0.8rem;
+  background: var(--primary);
+  color: var(--text-white);
+  border-radius: 8px;
+  transition: 0.5s all;
+
+  :hover {
+    filter: brightness(0.9);
+  }
+
+  @media (max-width: 700px) {
+    line-height: 24px;
   }
 `;

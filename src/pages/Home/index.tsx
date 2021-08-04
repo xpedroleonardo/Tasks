@@ -39,7 +39,7 @@ function Home() {
           <New>
             <Link to="/new" className="">
               <img src={plusImg} alt="Nova task" />
-              Nova tarefa
+              Nova task
             </Link>
           </New>
 

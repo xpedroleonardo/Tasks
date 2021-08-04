@@ -5,7 +5,12 @@ export const GlobalStyle = createGlobalStyle`
     --body: #f0f2f5;
     --background: #fcfdff;
     --border: #e1e3e5;
+
+    --primary: #abc4ff;
+
+    --text-white: #fcfdff;
     --text-gray: #5a5a66;
+
   }
 
   * {
@@ -13,6 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     font-family: "Rubik", sans-serif;
+  }
+
+  header {
+    background: var(--primary);
   }
 
   body {
@@ -27,6 +36,22 @@ export const GlobalStyle = createGlobalStyle`
     width: min(1240px, 90vw);
     margin: 0 auto;
   }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track {
+    background: var(--body);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #5a5a66;
+  }
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track {
+    background: var(--body);
+}
+
 
   header {
     width: 100vw;

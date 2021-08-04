@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Header from "../../components/Header";
 
 import avatarImg from "../../assets/images/avatar.svg";
@@ -10,13 +10,37 @@ import {
   Collapse,
   TitleCollapse,
   DescriptionCollapse,
+  Button,
 } from "./styles";
 
 function New() {
-  const [description, setDescription] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [description, setDescription] = useState("");
 
-  function text(params: EventTarget & HTMLInputElement) {
-    console.log(params.value);
+  function formPrevent(event: FormEvent) {
+    event.preventDefault();
+  }
+
+  function inputCollapseTextEffect({ value }: EventTarget & HTMLInputElement) {
+    let text = document.getElementById("titleCollapse");
+    if (text) text.textContent = value;
+
+    if (text?.textContent === "") text.textContent = "Título";
+  }
+
+  function textAreaCollapseTextEffect({
+    value,
+  }: EventTarget & HTMLTextAreaElement) {
+    let text = document.getElementById("descriptionCollapse");
+    if (text) text.textContent = value;
+
+    if (text?.textContent === "") {
+      text.textContent = `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      Accusantium voluptatibus odio natus numquam provident
+      aLorem, ipsum dolor sit amet consectetur adipisicing elit.
+      Accusantium voluptatibus odio natus numquam provident
+      aliquam vel iste quasi repelle.`;
+    }
   }
 
   return (
@@ -24,7 +48,7 @@ function New() {
       <Header title="Nova Task" />
       <div className="container">
         <Main>
-          <form action="" autoComplete="off">
+          <form action="" onSubmit={formPrevent} autoComplete="off">
             <fieldset>
               <legend>Dados da Tarefa</legend>
 
@@ -33,7 +57,7 @@ function New() {
               <Group>
                 <label htmlFor="title">Título</label>
                 <input
-                  onChange={(event) => text(event.target)}
+                  onChange={(event) => inputCollapseTextEffect(event.target)}
                   placeholder="Digite o titúlo da tarefa..."
                   type="text"
                   name="title"
@@ -46,6 +70,7 @@ function New() {
                 <label htmlFor="description">Descrição</label>
                 <textarea
                   required
+                  onChange={(event) => textAreaCollapseTextEffect(event.target)}
                   placeholder="Digite a descrição da tarefa..."
                   maxLength={255}
                   name="description"
@@ -53,7 +78,7 @@ function New() {
                 ></textarea>
               </Group>
               <div className="button">
-                <button type="submit">Enviar</button>
+                <Button type="submit">Enviar</Button>
               </div>
             </fieldset>
           </form>
@@ -64,16 +89,16 @@ function New() {
 
             <Collapse>
               <TitleCollapse>
-                <span>Título</span>
-                <img src={chevronUpImg} draggable="false" />
+                <span id="titleCollapse">Título</span>
+                <img src={chevronUpImg} alt="" draggable="false" />
               </TitleCollapse>
               <DescriptionCollapse>
                 <div className="creator">
-                  <img src={avatarImg} draggable="false" />
+                  <img src={avatarImg} alt="" draggable="false" />
                   <span>Usuário</span>
                 </div>
 
-                <p>
+                <p id="descriptionCollapse">
                   Lorem, ipsum dolor sit amet consectetur adipisicing
                   elit.Accusantium voluptatibus odio natus numquam provident
                   aLorem,ipsum dolor sit amet consectetur adipisicing elit.

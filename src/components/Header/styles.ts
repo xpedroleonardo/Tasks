@@ -13,8 +13,8 @@ export const HeaderGrid = styled.section`
   }
 
   h1 {
+    color: var(--text-white);
     justify-self: center;
-
     font-weight: 600;
     font-size: 1rem;
   }

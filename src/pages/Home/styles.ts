@@ -11,6 +11,7 @@ export const SectionHeader = styled.section`
     justify-self: center;
     font-weight: bold;
     font-size: 1.05rem;
+    color: var(--text-white);
   }
 
   aside {
@@ -19,6 +20,7 @@ export const SectionHeader = styled.section`
 
     img {
       width: 3rem;
+      fill: azure;
     }
   }
 `;
@@ -37,9 +39,9 @@ export const New = styled.div`
   justify-content: flex-end;
 
   a {
+    background: var(--primary);
     text-decoration: none;
-    color: #000;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1rem;
 
     display: flex;
@@ -50,9 +52,14 @@ export const New = styled.div`
     gap: 0.7rem;
     width: fit-content;
 
-    border: 2px solid #000000;
+    border: 1px solid var(--border);
     border-radius: 8px;
-    color: var(--text-gray);
+    color: var(--text-white);
+    transition: 0.5s all;
+
+    :hover {
+      filter: brightness(0.9);
+    }
   }
 `;
 
