@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import avatarImg from "../../assets/images/avatar.svg";
 import chesvronDownImg from "../../assets/images/chevron-down.svg";
 import editImg from "../../assets/images/edit.svg";
-import trashImg from "../../assets/images/trash.svg";
+import cancelImg from "../../assets/images/cancel.svg";
 import completeImg from "../../assets/images/circle-ok.svg";
 
 import {
@@ -41,19 +41,13 @@ function Card({ title, description }: CardProps) {
         <div className="separator"></div>
         <section>
           <div className="icon-group">
-            <img src={trashImg} draggable="false" alt="Task completa" />
+            <img src={cancelImg} draggable="false" alt="Task completa" />
           </div>
 
           <aside>
             <div className="icon-group">
               <Link to="/edit">
-                <img
-                  src={editImg}
-                  className="icon"
-                  draggable="false"
-                  title="Editar task"
-                  alt="Editar task"
-                />
+                <img src={editImg} draggable="false" alt="Editar task" />
               </Link>
             </div>
             <div className="icon-group">

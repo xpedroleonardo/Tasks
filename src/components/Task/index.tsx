@@ -1,4 +1,4 @@
-import { FormEvent, InputHTMLAttributes } from "react";
+import { FormEvent } from "react";
 import avatarImg from "../../assets/images/avatar.svg";
 import chevronUpImg from "../../assets/images/chevron-up.svg";
 
