@@ -17,10 +17,16 @@ export const SectionHeader = styled.section`
   aside {
     grid-column: 3;
     justify-self: end;
+    height: 3rem;
 
-    img {
-      width: 3rem;
-      fill: azure;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 3rem;
+      }
     }
   }
 `;

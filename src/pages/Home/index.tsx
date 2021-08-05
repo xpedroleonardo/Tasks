@@ -26,7 +26,7 @@ function Home() {
                 <img
                   src={avatarImg}
                   alt="User avatar"
-                  title="sdnas"
+                  title="Ver perfil"
                   draggable="false"
                 />
               </Link>

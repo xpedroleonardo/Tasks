@@ -42,6 +42,20 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
+  a,
+  input,
+  textarea,
+  button,
+  details,
+  summary {
+    outline: none;
+
+    :focus {
+      box-shadow: 0 0 0 2px var(--text-gray);
+    }
+  }
+
+
   ::-webkit-scrollbar {
     width: 3px;
   }
