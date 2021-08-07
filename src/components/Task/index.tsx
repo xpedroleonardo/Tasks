@@ -41,7 +41,7 @@ function Task({ handleSubmitForm }: TaskProps) {
   }
 
   return (
-    <div className="container">
+    <div className="container animate-up">
       <Main>
         <form action="" onSubmit={handleSubmitForm} autoComplete="off">
           <fieldset>

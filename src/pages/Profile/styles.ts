@@ -87,13 +87,14 @@ export const Group = styled.div`
     width: 100%;
     font-weight: bold;
     font-size: 1rem;
+    line-height: 24px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     color: var(--text-white);
-    padding: 0.9rem 0.8rem;
+    padding: 13px;
     background: var(--primary);
     border: 1px solid var(--border);
     border-radius: 8px;

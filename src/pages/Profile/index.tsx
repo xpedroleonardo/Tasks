@@ -23,7 +23,7 @@ function Profile() {
     <>
       <Header title="Perfil" />
       <Main>
-        <div className="container">
+        <div className="container animate-up">
           <form action="" autoComplete="off" encType="multipart/form-data">
             <section>
               <img

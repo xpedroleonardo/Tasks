@@ -16,9 +16,12 @@ import {
 type CardProps = {
   title: string;
   description: string;
+  modal(action: string): void;
 };
 
-function Card({ title, description }: CardProps) {
+function Card(props: CardProps) {
+  const { title, description, modal } = props;
+
   return (
     <Collapse>
       <TitleCollapse>
@@ -41,7 +44,12 @@ function Card({ title, description }: CardProps) {
         <div className="separator"></div>
         <section>
           <div className="icon-group">
-            <img src={cancelImg} draggable="false" alt="Task completa" />
+            <img
+              src={cancelImg}
+              onClick={() => modal("D")}
+              draggable="false"
+              alt="Apagar task"
+            />
           </div>
 
           <aside>
@@ -51,7 +59,12 @@ function Card({ title, description }: CardProps) {
               </Link>
             </div>
             <div className="icon-group">
-              <img src={completeImg} draggable="false" alt="Task completa" />
+              <img
+                src={completeImg}
+                onClick={() => modal("C")}
+                draggable="false"
+                alt="Task completa"
+              />
             </div>
           </aside>
         </section>
