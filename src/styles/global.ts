@@ -49,10 +49,6 @@ export const GlobalStyle = createGlobalStyle`
   details,
   summary {
     outline: none;
-
-    :focus {
-      box-shadow: 0 0 0 2px var(--text-gray);
-    }
   }
 
 
@@ -79,6 +75,167 @@ export const GlobalStyle = createGlobalStyle`
   details summary {
     list-style: none;
   }
+
+  /* MODAL */
+
+  /* .modal-wrapper {
+    visibility: hidden;
+    opacity: 0;
+  } */
+
+  .modal-wrapper {
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: rgba(0, 0, 0, 0.8);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modal {
+    background: #F0F2F5;
+
+    border-radius: 0.313rem;
+
+    padding: 2.5rem;
+
+    text-align: center;
+
+    color: #787880;
+
+    .button + .button {
+      margin-left: 1rem;
+    }
+
+    img {
+      width: 80px;
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      color: #5a5a66;
+
+      font-weight: 600;
+      font-size: 2rem;
+      line-height: 2.625rem;
+
+      margin-bottom: .5rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    footer {
+      .button {
+        padding: 0.75rem 3rem;
+        border-radius: 0.313rem;
+        border: 0;
+
+        font-weight: 700;
+        font-size: 0.875rem;
+        line-height: 1.625rem;
+        text-transform: uppercase;
+
+        transition: all 0.2s;
+
+        cursor: pointer;
+
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        :nth-child(1) {
+          color: #787880;
+          background: #e1e3e5;
+
+          :hover {
+            background: #ECEEF0;
+          }
+        }
+
+        :nth-child(2) {
+          background: #eb3b35;
+          color: white;
+
+          :hover {
+            background: #FA3F38;
+          }
+        }
+      }
+    } 
+  }
+
+  /* ANIMAÇÔES */
+
+  @keyframes up {
+    from {
+      opacity: 0;
+      transform: translateY(35px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-up {
+    transform: translateY(35px);
+    opacity: 0;
+
+    animation: up 200ms forwards;
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-pop {
+    transform: scale(0);
+    opacity: 0;
+
+    animation: pop 300ms forwards;
+  }
+
+  .reverse {
+    animation-direction: reverse;
+  }
+
+  .back {
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .delay-1 {
+    animation-delay: 100ms;
+  }
+
+  .delay-2 {
+    animation-delay: 200ms;
+  }
+
+
+  /* RESPONSIVIDADE */
 
   @media (max-width: 1080px) {
     html {
