@@ -12,31 +12,43 @@ import {
 } from "./styles";
 
 type TaskProps = {
-  title?: string;
-  description?: string;
+  task?: any;
   handleSubmitForm(event: FormEvent): void;
 };
 
-function Task({ handleSubmitForm }: TaskProps) {
+function Task(props: TaskProps) {
+  const { handleSubmitForm, task } = props;
+
+  const titleExample = "Título";
+  const descriptionExample = `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+  Accusantium voluptatibus odio natus numquam provident
+  aLorem, ipsum dolor sit amet consectetur adipisicing elit.
+  Accusantium voluptatibus odio natus numquam provident
+  aliquam vel iste quasi repelle.`;
+
   function inputCollapseTextEffect({ value }: EventTarget & HTMLInputElement) {
     let text = document.getElementById("titleCollapse");
     if (text) text.textContent = value;
 
-    if (text?.textContent === "") text.textContent = "Título";
+    if (text?.textContent === "" && !task) {
+      text.textContent = titleExample;
+    } else if (text?.textContent === "") {
+      text.textContent = task.title;
+    }
   }
 
   function textAreaCollapseTextEffect({
     value,
   }: EventTarget & HTMLTextAreaElement) {
     let text = document.getElementById("descriptionCollapse");
-    if (text) text.textContent = value;
+    if (text) {
+      text.textContent = value;
+    }
 
-    if (text?.textContent === "") {
-      text.textContent = `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-      Accusantium voluptatibus odio natus numquam provident
-      aLorem, ipsum dolor sit amet consectetur adipisicing elit.
-      Accusantium voluptatibus odio natus numquam provident
-      aliquam vel iste quasi repelle.`;
+    if (text?.textContent === "" && !task) {
+      text.textContent = descriptionExample;
+    } else if (text?.textContent === "") {
+      text.textContent = task.description;
     }
   }
 
@@ -59,6 +71,7 @@ function Task({ handleSubmitForm }: TaskProps) {
                 id="title"
                 maxLength={30}
                 required
+                defaultValue={task?.title}
               />
             </Group>
             <Group>
@@ -70,6 +83,7 @@ function Task({ handleSubmitForm }: TaskProps) {
                 maxLength={255}
                 name="description"
                 id="description"
+                defaultValue={task?.description}
               ></textarea>
             </Group>
             <div className="button">
@@ -84,7 +98,9 @@ function Task({ handleSubmitForm }: TaskProps) {
 
           <Collapse>
             <TitleCollapse>
-              <span id="titleCollapse">Título</span>
+              <span id="titleCollapse">
+                {task?.title ? task.title : titleExample}
+              </span>
               <img src={chevronUpImg} alt="" draggable="false" />
             </TitleCollapse>
             <DescriptionCollapse>
@@ -94,11 +110,7 @@ function Task({ handleSubmitForm }: TaskProps) {
               </div>
 
               <p id="descriptionCollapse">
-                Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit.Accusantium voluptatibus odio natus numquam provident
-                aLorem,ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantiumvoluptatibus odio natus numquam provident aliquam vel
-                iste quasirepelle.
+                {task?.description ? task.description : descriptionExample}
               </p>
             </DescriptionCollapse>
           </Collapse>

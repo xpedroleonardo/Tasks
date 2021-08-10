@@ -24,6 +24,7 @@ type TaskProps = {
 function Home() {
   const { push } = useHistory();
 
+  const [idModal, setIdModal] = useState(0);
   const [user, setUser] = useState<UserProps>();
   const [tasks, setTasks] = useState<TaskProps[]>();
   const [open, setOpen] = useState(false);
@@ -42,6 +43,8 @@ function Home() {
       setModalShow(false);
       modalOpen();
     }
+
+    setIdModal(id);
   }
 
   useEffect(() => {
@@ -84,19 +87,15 @@ function Home() {
           <Wrapper>
             {tasks?.map((task) => {
               return (
-                <Card
-                  key={task.id}
-                  task={task}
-                  modal={modalStatus}
-                  user={{ ...user }}
-                >
+                <div className="tasks-key" key={task.id}>
+                  <Card task={task} modal={modalStatus} user={{ ...user }} />
                   <Modal
-                    id={task.id}
+                    id={idModal}
                     modalDelete={modalShow}
                     isOpen={modalOpen}
                     open={open}
                   />
-                </Card>
+                </div>
               );
             })}
           </Wrapper>

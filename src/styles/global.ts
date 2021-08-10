@@ -52,8 +52,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .completed {
-    /* background: #D9FFE3; */
     border: 2px solid #80ed99;
+  }
+
+  .tasks-key { 
+    display: flex;
+    width: 100%;
+    height: auto;
+    max-width: 580px;
+    flex-wrap: wrap;
   }
 
   ::-webkit-scrollbar {

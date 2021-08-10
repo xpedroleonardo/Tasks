@@ -1,8 +1,32 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { FormEvent } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import Task from "../../components/Task";
+import api from "../../services/api";
+
+type Params = {
+  id: string;
+};
+
+type TaskProps = {
+  id: number;
+  title: string;
+  description: string;
+  completed: boolean;
+  created_at: string;
+  updated_at: string;
+};
 
 function Edit() {
+  const { id } = useParams<Params>();
+  const [task, setTask] = useState<TaskProps>();
+
+  useEffect(() => {
+    api.get(`/task/${id}`).then((res) => setTask(res.data));
+  }, [id]);
+
   function handleFormSubmitEdit(event: FormEvent) {
     event.preventDefault();
 
@@ -21,7 +45,7 @@ function Edit() {
   return (
     <>
       <Header title="Editar task" />
-      <Task handleSubmitForm={handleFormSubmitEdit} />
+      <Task task={task} handleSubmitForm={handleFormSubmitEdit} />
     </>
   );
 }
