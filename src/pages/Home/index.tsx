@@ -1,24 +1,37 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { New, SectionHeader, Main, Wrapper } from "./styles";
 import Modal from "../../components/Modal";
+import api from "../../services/api";
 
 import avatarImg from "../../assets/images/avatar.svg";
 import plusImg from "../../assets/images/plus.svg";
 import Card from "../../components/Card";
 
+type UserProps = {
+  name: string;
+  avatar: string;
+};
+
+type TaskProps = {
+  id: number;
+  title: string;
+  description: string;
+  completed: boolean;
+};
+
 function Home() {
+  const [user, setUser] = useState<UserProps>();
+  const [tasks, setTasks] = useState<TaskProps[]>();
   const [open, setOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-
-  let test = [1, 2, 3, 4, 5];
 
   function modalOpen() {
     setOpen(!open);
   }
 
-  function modalStatus(action: string) {
+  function modalStatus(action: string, id: number) {
     if (action === "D") {
       setModalShow(true);
       modalOpen();
@@ -28,11 +41,13 @@ function Home() {
     }
   }
 
-  const descrip = `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-  Accusantium voluptatibus odio natus numquam provident
-  aLorem, ipsum dolor sit amet consectetur adipisicing elit.
-  Accusantium voluptatibus odio natus numquam provident
-  aliquam vel iste quasi repelle.`;
+  useEffect(() => {
+    api.get("/").then((response) => {
+      const { user, tasks } = response.data;
+      setUser(user);
+      setTasks(tasks);
+    });
+  }, [open]);
 
   return (
     <>
@@ -46,7 +61,7 @@ function Home() {
                 <img
                   src={avatarImg}
                   alt="User avatar"
-                  title="Ver perfil"
+                  title="Perfil"
                   draggable="false"
                 />
               </Link>
@@ -64,19 +79,21 @@ function Home() {
           </New>
 
           <Wrapper>
-            {test.map((tes) => {
+            {tasks?.map((task) => {
               return (
-                <Card
-                  key={tes}
-                  title="Título"
-                  modal={modalStatus}
-                  description={descrip}
-                />
+                <div key={task.id}>
+                  <Card task={task} modal={modalStatus} user={{ ...user }} />
+                  <Modal
+                    id={task.id}
+                    modalDelete={modalShow}
+                    isOpen={modalOpen}
+                    open={open}
+                  />
+                </div>
               );
             })}
           </Wrapper>
         </Main>
-        <Modal modalDelete={modalShow} isOpen={modalOpen} open={open} />
       </div>
     </>
   );

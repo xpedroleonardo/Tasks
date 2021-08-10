@@ -1,16 +1,30 @@
 import ReactModal from "react-modal";
+import { FormEvent } from "react";
+import { useHistory } from "react-router-dom";
 
 import deleteImg from "../../assets/images/cancel.svg";
 import completeImg from "../../assets/images/circle-ok.svg";
+import api from "../../services/api";
 
 type ModalProps = {
+  id: number;
   open: boolean;
   modalDelete: boolean;
   isOpen(): void;
 };
 
 function Modal(props: ModalProps) {
-  const { open, modalDelete, isOpen } = props;
+  const { id, open, modalDelete, isOpen } = props;
+
+  function Completed(event: FormEvent, id: number) {
+    event.preventDefault();
+  }
+
+  async function Delete(event: FormEvent, id: number) {
+    event.preventDefault();
+
+    await api.delete(`/delete/${id}`).then(() => isOpen());
+  }
 
   return (
     <ReactModal ariaHideApp={false} isOpen={open} className="modal-wrapper">
@@ -57,21 +71,23 @@ function Modal(props: ModalProps) {
               <button className="button red" type="submit" form="delete-task">
                 Excluir Task
               </button>
-              <form method="post" action="/task/delete" id="delete-task"></form>
+              <form
+                onSubmit={(event) => Delete(event, id)}
+                id="delete-task"
+              ></form>
             </>
           ) : (
             <>
               <button
                 className="button grenn"
                 type="submit"
-                form="complete-task"
+                form="completed-task"
               >
                 Task Completa
               </button>
               <form
-                method="post"
-                action="/task/complete"
-                id="complete-task"
+                onSubmit={(event) => Completed(event, id)}
+                id="completed-task"
               ></form>
             </>
           )}

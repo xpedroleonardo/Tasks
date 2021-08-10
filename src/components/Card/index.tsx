@@ -14,18 +14,26 @@ import {
 } from "./styles";
 
 type CardProps = {
-  title: string;
-  description: string;
-  modal(action: string): void;
+  task: {
+    id: number;
+    title: string;
+    description: string;
+    completed: boolean;
+  };
+  modal(action: string, id: number): void;
+  user: {
+    name?: string;
+    avatar?: string;
+  };
 };
 
 function Card(props: CardProps) {
-  const { title, description, modal } = props;
+  const { task, user, modal } = props;
 
   return (
-    <Collapse>
+    <Collapse className={task.completed ? "completed" : ""}>
       <TitleCollapse>
-        <span>{title}</span>
+        <span>{task.title}</span>
         <img
           src={chesvronDownImg}
           alt="Ver detalhes"
@@ -36,9 +44,9 @@ function Card(props: CardProps) {
       <MainCollapse>
         <div className="creator">
           <img src={avatarImg} draggable="false" alt="User avatar" width="48" />
-          <span>Usuário</span>
+          <span>{user.name}</span>
         </div>
-        <p>{description}</p>
+        <p>{task.description}</p>
       </MainCollapse>
       <FooterCollapse>
         <div className="separator"></div>
@@ -46,7 +54,7 @@ function Card(props: CardProps) {
           <div className="icon-group">
             <img
               src={cancelImg}
-              onClick={() => modal("D")}
+              onClick={() => modal("D", task.id)}
               draggable="false"
               alt="Apagar task"
             />
@@ -61,7 +69,7 @@ function Card(props: CardProps) {
             <div className="icon-group">
               <img
                 src={completeImg}
-                onClick={() => modal("C")}
+                onClick={() => modal("C", task.id)}
                 draggable="false"
                 alt="Task completa"
               />
