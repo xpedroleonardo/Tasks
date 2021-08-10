@@ -1,6 +1,5 @@
 import ReactModal from "react-modal";
 import { FormEvent } from "react";
-import { useHistory } from "react-router-dom";
 
 import deleteImg from "../../assets/images/cancel.svg";
 import completeImg from "../../assets/images/circle-ok.svg";
@@ -16,8 +15,10 @@ type ModalProps = {
 function Modal(props: ModalProps) {
   const { id, open, modalDelete, isOpen } = props;
 
-  function Completed(event: FormEvent, id: number) {
+  async function Completed(event: FormEvent, id: number) {
     event.preventDefault();
+
+    await api.patch(`/completed/${id}`).then(() => isOpen());
   }
 
   async function Delete(event: FormEvent, id: number) {
@@ -79,7 +80,7 @@ function Modal(props: ModalProps) {
           ) : (
             <>
               <button
-                className="button grenn"
+                className="button green"
                 type="submit"
                 form="completed-task"
               >

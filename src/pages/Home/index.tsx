@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { New, SectionHeader, Main, Wrapper } from "./styles";
@@ -22,6 +22,8 @@ type TaskProps = {
 };
 
 function Home() {
+  const { push } = useHistory();
+
   const [user, setUser] = useState<UserProps>();
   const [tasks, setTasks] = useState<TaskProps[]>();
   const [open, setOpen] = useState(false);
@@ -29,6 +31,7 @@ function Home() {
 
   function modalOpen() {
     setOpen(!open);
+    push("/");
   }
 
   function modalStatus(action: string, id: number) {
@@ -81,15 +84,19 @@ function Home() {
           <Wrapper>
             {tasks?.map((task) => {
               return (
-                <div key={task.id}>
-                  <Card task={task} modal={modalStatus} user={{ ...user }} />
+                <Card
+                  key={task.id}
+                  task={task}
+                  modal={modalStatus}
+                  user={{ ...user }}
+                >
                   <Modal
                     id={task.id}
                     modalDelete={modalShow}
                     isOpen={modalOpen}
                     open={open}
                   />
-                </div>
+                </Card>
               );
             })}
           </Wrapper>

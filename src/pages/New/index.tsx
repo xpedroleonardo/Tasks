@@ -1,9 +1,14 @@
 import { FormEvent } from "react";
+import { useHistory } from "react-router-dom";
+
 import Header from "../../components/Header";
 import Task from "../../components/Task";
+import api from "../../services/api";
 
 function New() {
-  function handleFormSubmitNew(event: FormEvent) {
+  const { push } = useHistory();
+
+  async function handleFormSubmitNew(event: FormEvent) {
     event.preventDefault();
 
     const target = event.target as typeof event.target & {
@@ -11,11 +16,12 @@ function New() {
       description: { value: string };
     };
 
-    const title = target.title.value; // typechecks!
-    const description = target.description.value;
+    const data = {
+      title: target.title.value,
+      description: target.description.value,
+    };
 
-    console.log("Title: ", title);
-    console.log("Description: ", description);
+    await api.post("/create/task", data).then(() => push("/"));
   }
 
   return (

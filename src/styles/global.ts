@@ -51,6 +51,10 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
+  .completed {
+    /* background: #D9FFE3; */
+    border: 2px solid #80ed99;
+  }
 
   ::-webkit-scrollbar {
     width: 3px;
@@ -167,12 +171,21 @@ export const GlobalStyle = createGlobalStyle`
           }
         }
 
-        :nth-child(2) {
+        &.red {
           background: #eb3b35;
           color: white;
 
           :hover {
             background: #FA3F38;
+          }
+        }
+
+        &.green {
+          background: #80ed99;
+          color: white;
+
+          :hover {
+            background: #75D68B;
           }
         }
       }
