@@ -15,13 +15,13 @@ type ModalProps = {
 function Modal(props: ModalProps) {
   const { id, open, modalDelete, isOpen } = props;
 
-  async function Completed(event: FormEvent, id: number) {
+  async function Completed(event: FormEvent) {
     event.preventDefault();
 
     await api.patch(`/completed/${id}`).then(() => isOpen());
   }
 
-  async function Delete(event: FormEvent, id: number) {
+  async function Delete(event: FormEvent) {
     event.preventDefault();
 
     await api.delete(`/delete/${id}`).then(() => isOpen());
@@ -72,10 +72,7 @@ function Modal(props: ModalProps) {
               <button className="button red" type="submit" form="delete-task">
                 Excluir Task
               </button>
-              <form
-                onSubmit={(event) => Delete(event, id)}
-                id="delete-task"
-              ></form>
+              <form onSubmit={(event) => Delete(event)} id="delete-task"></form>
             </>
           ) : (
             <>
@@ -87,7 +84,7 @@ function Modal(props: ModalProps) {
                 Task Completa
               </button>
               <form
-                onSubmit={(event) => Completed(event, id)}
+                onSubmit={(event) => Completed(event)}
                 id="completed-task"
               ></form>
             </>

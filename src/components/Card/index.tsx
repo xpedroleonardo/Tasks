@@ -31,53 +31,66 @@ function Card(props: CardProps) {
   const { task, user, modal } = props;
 
   return (
-    <Collapse className={task.completed ? "completed" : ""}>
-      <TitleCollapse>
-        <span>{task.title}</span>
-        <img
-          src={chesvronDownImg}
-          alt="Ver detalhes"
-          title="Ver detalhes"
-          draggable="false"
-        />
-      </TitleCollapse>
-      <MainCollapse>
-        <div className="creator">
-          <img src={avatarImg} draggable="false" alt="User avatar" width="48" />
-          <span>{user.name}</span>
-        </div>
-        <p>{task.description}</p>
-      </MainCollapse>
-      <FooterCollapse>
-        <div className="separator"></div>
-        <section>
-          <div className="icon-group">
+    <>
+      <Collapse className={task.completed ? "completed" : ""}>
+        <TitleCollapse>
+          <span>{task.title}</span>
+          <img
+            src={chesvronDownImg}
+            alt="Ver detalhes"
+            title="Ver detalhes"
+            draggable="false"
+          />
+        </TitleCollapse>
+        <MainCollapse>
+          <div className="creator">
             <img
-              src={cancelImg}
-              onClick={() => modal("D", task.id)}
+              src={avatarImg}
               draggable="false"
-              alt="Apagar task"
+              alt="User avatar"
+              width="48"
             />
+            <span>{user.name}</span>
           </div>
-
-          <aside>
-            <div className="icon-group">
-              <Link to="/edit">
-                <img src={editImg} draggable="false" alt="Editar task" />
-              </Link>
-            </div>
+          <p>{task.description}</p>
+        </MainCollapse>
+        <FooterCollapse>
+          <div className="separator"></div>
+          <section>
             <div className="icon-group">
               <img
-                src={completeImg}
-                onClick={() => modal("C", task.id)}
+                src={cancelImg}
+                onClick={() => modal("D", task.id)}
                 draggable="false"
-                alt="Task completa"
+                alt="Apagar task"
               />
             </div>
-          </aside>
-        </section>
-      </FooterCollapse>
-    </Collapse>
+
+            <aside>
+              {!task.completed ? (
+                <>
+                  <div className="icon-group">
+                    <Link to={`/edit/${task.id}`}>
+                      <img src={editImg} draggable="false" alt="Editar task" />
+                    </Link>
+                  </div>
+                  <div className="icon-group">
+                    <img
+                      src={completeImg}
+                      onClick={() => modal("C", task.id)}
+                      draggable="false"
+                      alt="Task completa"
+                    />
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </aside>
+          </section>
+        </FooterCollapse>
+      </Collapse>
+    </>
   );
 }
 

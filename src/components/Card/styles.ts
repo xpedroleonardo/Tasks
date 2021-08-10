@@ -62,6 +62,7 @@ export const MainCollapse = styled.main`
 
   p {
     line-height: 21px;
+    word-wrap: break-word;
     color: var(--text-gray);
   }
 `;
@@ -104,5 +105,9 @@ export const FooterCollapse = styled.footer`
     align-items: center;
     justify-content: center;
     gap: 20px;
+
+    img {
+      cursor: pointer;
+    }
   }
 `;
