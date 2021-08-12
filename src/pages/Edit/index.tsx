@@ -1,33 +1,34 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { FormEvent } from "react";
-import { useParams } from "react-router-dom";
-import Header from "../../components/Header";
-import Task from "../../components/Task";
+import { useState, useEffect, FormEvent } from "react";
+import { useHistory, useParams } from "react-router-dom";
+
 import api from "../../services/api";
+import Task from "../../components/Task";
+import Header from "../../components/Header";
 
 type Params = {
   id: string;
 };
 
 type TaskProps = {
-  id: number;
   title: string;
   description: string;
   completed: boolean;
-  created_at: string;
-  updated_at: string;
 };
 
 function Edit() {
   const { id } = useParams<Params>();
+  const { push } = useHistory();
   const [task, setTask] = useState<TaskProps>();
 
   useEffect(() => {
     api.get(`/task/${id}`).then((res) => setTask(res.data));
   }, [id]);
 
-  function handleFormSubmitEdit(event: FormEvent) {
+  if (task?.completed) {
+    push("/");
+  }
+
+  async function handleFormSubmitEdit(event: FormEvent) {
     event.preventDefault();
 
     const target = event.target as typeof event.target & {
@@ -35,11 +36,12 @@ function Edit() {
       description: { value: string };
     };
 
-    const title = target.title.value; // typechecks!
-    const description = target.description.value;
+    const data = {
+      title: target.title.value,
+      description: target.description.value,
+    };
 
-    console.log("Title: ", title);
-    console.log("Description: ", description);
+    await api.put(`/update/task/${id}`, data).then(() => push("/"));
   }
 
   return (

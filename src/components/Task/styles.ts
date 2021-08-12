@@ -32,7 +32,7 @@ export const Main = styled.main`
     color: var(--text-gray);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 730px) {
     main.main {
       flex-direction: column;
       flex-wrap: nowrap;
@@ -147,6 +147,11 @@ export const DescriptionCollapse = styled.main`
     flex-wrap: wrap;
     gap: 15px;
     color: var(--text-gray);
+
+    img {
+      width: 50px;
+      border-radius: 50%;
+    }
   }
 
   p {

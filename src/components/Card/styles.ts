@@ -58,6 +58,11 @@ export const MainCollapse = styled.main`
     justify-content: flex-start;
     gap: 15px;
     color: var(--text-gray);
+
+    img {
+      width: 50px;
+      border-radius: 50%;
+    }
   }
 
   p {

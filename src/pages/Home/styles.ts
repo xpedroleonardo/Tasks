@@ -26,6 +26,7 @@ export const SectionHeader = styled.section`
 
       img {
         width: 3rem;
+        border-radius: 50%;
       }
     }
   }
@@ -75,4 +76,35 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 24px;
+`;
+
+export const Empty = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 25px;
+
+  img {
+    width: 20rem;
+  }
+
+  .empty-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+
+    h2 {
+      color: var(--text-gray);
+      line-height: 24px;
+      font-weight: 500;
+    }
+
+    span {
+      color: var(--text-gray);
+    }
+  }
 `;

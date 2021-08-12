@@ -1,4 +1,6 @@
-import { FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
+
+import api from "../../services/api";
 import avatarImg from "../../assets/images/avatar.svg";
 import chevronUpImg from "../../assets/images/chevron-up.svg";
 
@@ -16,8 +18,23 @@ type TaskProps = {
   handleSubmitForm(event: FormEvent): void;
 };
 
+type UserProps = {
+  name: string;
+  avatar: string;
+};
+
 function Task(props: TaskProps) {
+  const [user, setUser] = useState<UserProps>();
   const { handleSubmitForm, task } = props;
+
+  useEffect(() => {
+    api.get("/user").then((res) => {
+      setUser(res.data);
+    });
+  }, []);
+
+  const url = process.env.REACT_APP_URL_IMAGE;
+  const userImg = user?.avatar ? `${url + user.avatar}` : avatarImg;
 
   const titleExample = "Título";
   const descriptionExample = `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -105,8 +122,8 @@ function Task(props: TaskProps) {
             </TitleCollapse>
             <DescriptionCollapse>
               <div className="creator">
-                <img src={avatarImg} alt="" draggable="false" />
-                <span>Usuário</span>
+                <img src={userImg} alt={user?.name} draggable="false" />
+                <span>{user?.name}</span>
               </div>
 
               <p id="descriptionCollapse">

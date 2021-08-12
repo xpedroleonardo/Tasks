@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { Main, Group } from "./styles";
-import { useEffect } from "react";
 
 import Header from "../../components/Header";
 import avatarImg from "../../assets/images/avatar.svg";
@@ -19,7 +17,7 @@ function Profile() {
   const [image, setImage] = useState("");
   const [user, setUser] = useState<ProfileProps>();
 
-  const url = "http://localhost:3333/image/";
+  const url = process.env.REACT_APP_URL_IMAGE;
   const ImageProfile = user?.avatar ? `${url + user.avatar}` : avatarImg;
 
   useEffect(() => {

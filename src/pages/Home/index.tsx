@@ -1,13 +1,14 @@
-import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { New, SectionHeader, Main, Wrapper, Empty } from "./styles";
 
-import { New, SectionHeader, Main, Wrapper } from "./styles";
-import Modal from "../../components/Modal";
 import api from "../../services/api";
 
-import avatarImg from "../../assets/images/avatar.svg";
-import plusImg from "../../assets/images/plus.svg";
 import Card from "../../components/Card";
+import Modal from "../../components/Modal";
+import plusImg from "../../assets/images/plus.svg";
+import emptyImg from "../../assets/images/empty.svg";
+import avatarImg from "../../assets/images/avatar.svg";
 
 type UserProps = {
   name: string;
@@ -55,6 +56,9 @@ function Home() {
     });
   }, [open]);
 
+  const url = process.env.REACT_APP_URL_IMAGE;
+  const userImg = user?.avatar ? `${url + user.avatar}` : avatarImg;
+
   return (
     <>
       <header>
@@ -65,8 +69,8 @@ function Home() {
             <aside>
               <Link to="/profile">
                 <img
-                  src={avatarImg}
-                  alt="User avatar"
+                  src={userImg}
+                  alt="Foto de perfil"
                   title="Perfil"
                   draggable="false"
                 />
@@ -78,26 +82,35 @@ function Home() {
       <div className="container animate-up">
         <Main>
           <New>
-            <Link to="/new" className="">
+            <Link to="/new" title="Nova Task">
               <img src={plusImg} alt="Nova task" />
-              Nova task
             </Link>
           </New>
 
           <Wrapper>
-            {tasks?.map((task) => {
-              return (
-                <div className="tasks-key" key={task.id}>
-                  <Card task={task} modal={modalStatus} user={{ ...user }} />
-                  <Modal
-                    id={idModal}
-                    modalDelete={modalShow}
-                    isOpen={modalOpen}
-                    open={open}
-                  />
+            {tasks?.length ? (
+              tasks?.map((task) => {
+                return (
+                  <div className="tasks-key" key={task.id}>
+                    <Card task={task} modal={modalStatus} user={{ ...user }} />
+                    <Modal
+                      id={idModal}
+                      modalDelete={modalShow}
+                      isOpen={modalOpen}
+                      open={open}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <Empty>
+                <img src={emptyImg} alt="Sem tasks" draggable="false" />
+                <div className="empty-text">
+                  <h2>Sem Tasks</h2>
+                  <span>Quando criar uma task, ela irá aparecer aqui</span>
                 </div>
-              );
-            })}
+              </Empty>
+            )}
           </Wrapper>
         </Main>
       </div>

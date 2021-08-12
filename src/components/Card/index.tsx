@@ -30,6 +30,9 @@ type CardProps = {
 function Card(props: CardProps) {
   const { task, user, modal } = props;
 
+  const url = process.env.REACT_APP_URL_IMAGE;
+  const userImg = user?.avatar ? `${url + user.avatar}` : avatarImg;
+
   return (
     <>
       <Collapse className={task.completed ? "completed" : ""}>
@@ -44,12 +47,7 @@ function Card(props: CardProps) {
         </TitleCollapse>
         <MainCollapse>
           <div className="creator">
-            <img
-              src={avatarImg}
-              draggable="false"
-              alt="User avatar"
-              width="48"
-            />
+            <img src={userImg} draggable="false" alt="User avatar" width="48" />
             <span>{user.name}</span>
           </div>
           <p>{task.description}</p>
