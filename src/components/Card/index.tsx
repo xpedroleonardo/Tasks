@@ -38,16 +38,11 @@ function Card(props: CardProps) {
       <Collapse className={task.completed ? "completed" : ""}>
         <TitleCollapse>
           <span>{task.title}</span>
-          <img
-            src={chesvronDownImg}
-            alt="Ver detalhes"
-            title="Ver detalhes"
-            draggable="false"
-          />
+          <img src={chesvronDownImg} alt="Ver detalhes" draggable="false" />
         </TitleCollapse>
         <MainCollapse>
           <div className="creator">
-            <img src={userImg} draggable="false" alt="User avatar" width="48" />
+            <img src={userImg} draggable="false" alt={user.name} width="48" />
             <span>{user.name}</span>
           </div>
           <p>{task.description}</p>
@@ -60,6 +55,7 @@ function Card(props: CardProps) {
                 src={cancelImg}
                 onClick={() => modal("D", task.id)}
                 draggable="false"
+                title="Apagar"
                 alt="Apagar task"
               />
             </div>
@@ -69,7 +65,12 @@ function Card(props: CardProps) {
                 <>
                   <div className="icon-group">
                     <Link to={`/edit/${task.id}`}>
-                      <img src={editImg} draggable="false" alt="Editar task" />
+                      <img
+                        src={editImg}
+                        draggable="false"
+                        title="Editar"
+                        alt="Editar task"
+                      />
                     </Link>
                   </div>
                   <div className="icon-group">
@@ -77,6 +78,7 @@ function Card(props: CardProps) {
                       src={completeImg}
                       onClick={() => modal("C", task.id)}
                       draggable="false"
+                      title="Completar"
                       alt="Task completa"
                     />
                   </div>

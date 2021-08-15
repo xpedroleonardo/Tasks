@@ -76,7 +76,7 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar,
   ::-webkit-scrollbar-track {
     background: var(--body);
-}
+  }
 
 
   header {
@@ -237,23 +237,6 @@ export const GlobalStyle = createGlobalStyle`
 
     animation: pop 300ms forwards;
   }
-
-  .reverse {
-    animation-direction: reverse;
-  }
-
-  .back {
-    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .delay-1 {
-    animation-delay: 100ms;
-  }
-
-  .delay-2 {
-    animation-delay: 200ms;
-  }
-
 
   /* RESPONSIVIDADE */
 

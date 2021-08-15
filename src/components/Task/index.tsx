@@ -43,7 +43,7 @@ function Task(props: TaskProps) {
   Accusantium voluptatibus odio natus numquam provident
   aliquam vel iste quasi repelle.`;
 
-  function inputCollapseTextEffect({ value }: EventTarget & HTMLInputElement) {
+  function titleTextInput(value: string) {
     let text = document.getElementById("titleCollapse");
     if (text) text.textContent = value;
 
@@ -54,13 +54,9 @@ function Task(props: TaskProps) {
     }
   }
 
-  function textAreaCollapseTextEffect({
-    value,
-  }: EventTarget & HTMLTextAreaElement) {
+  function descriptionTextInput(value: string) {
     let text = document.getElementById("descriptionCollapse");
-    if (text) {
-      text.textContent = value;
-    }
+    if (text) text.textContent = value;
 
     if (text?.textContent === "" && !task) {
       text.textContent = descriptionExample;
@@ -72,7 +68,7 @@ function Task(props: TaskProps) {
   return (
     <div className="container animate-up">
       <Main>
-        <form action="" onSubmit={handleSubmitForm} autoComplete="off">
+        <form onSubmit={handleSubmitForm} autoComplete="off">
           <fieldset>
             <legend>Dados da Tarefa</legend>
 
@@ -81,26 +77,26 @@ function Task(props: TaskProps) {
             <Group>
               <label htmlFor="title">Título</label>
               <input
-                onChange={(event) => inputCollapseTextEffect(event.target)}
+                onChange={(e) => titleTextInput(e.target.value)}
                 placeholder="Digite o titúlo da tarefa..."
                 type="text"
                 name="title"
                 id="title"
                 maxLength={30}
+                defaultValue={task?.title ? task.title : null}
                 required
-                defaultValue={task?.title}
               />
             </Group>
             <Group>
               <label htmlFor="description">Descrição</label>
               <textarea
                 required
-                onChange={(event) => textAreaCollapseTextEffect(event.target)}
+                onChange={(e) => descriptionTextInput(e.target.value)}
                 placeholder="Digite a descrição da tarefa..."
                 maxLength={255}
                 name="description"
                 id="description"
-                defaultValue={task?.description}
+                defaultValue={task?.description ? task.description : null}
               ></textarea>
             </Group>
             <div className="button">

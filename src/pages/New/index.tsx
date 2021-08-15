@@ -1,9 +1,10 @@
 import { FormEvent } from "react";
 import { useHistory } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
-import Header from "../../components/Header";
-import Task from "../../components/Task";
 import api from "../../services/api";
+import Task from "../../components/Task";
+import Header from "../../components/Header";
 
 function New() {
   const { push } = useHistory();
@@ -21,12 +22,21 @@ function New() {
       description: target.description.value,
     };
 
-    await api.post("/create/task", data).then(() => push("/"));
+    await api.post("/create/task", data).then((res) => {
+      const { error } = res.data;
+
+      if (error) {
+        toast.error(error);
+      } else {
+        push("/");
+      }
+    });
   }
 
   return (
     <>
       <Header title="Nova Task" />
+      <Toaster position="top-center" reverseOrder={false} />
       <Task handleSubmitForm={handleFormSubmitNew} />
     </>
   );

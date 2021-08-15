@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import { New, SectionHeader, Main, Wrapper, Empty } from "./styles";
 
 import api from "../../services/api";
-
 import Card from "../../components/Card";
 import Modal from "../../components/Modal";
 import plusImg from "../../assets/images/plus.svg";
@@ -25,10 +24,10 @@ type TaskProps = {
 function Home() {
   const { push } = useHistory();
 
+  const [open, setOpen] = useState(false);
   const [idModal, setIdModal] = useState(0);
   const [user, setUser] = useState<UserProps>();
   const [tasks, setTasks] = useState<TaskProps[]>();
-  const [open, setOpen] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
   function modalOpen() {
