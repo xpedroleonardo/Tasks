@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { useHistory } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import api from "../../services/api";
 import Task from "../../components/Task";
@@ -36,7 +36,6 @@ function New() {
   return (
     <>
       <Header title="Nova Task" />
-      <Toaster position="top-center" reverseOrder={false} />
       <Task handleSubmitForm={handleFormSubmitNew} />
     </>
   );

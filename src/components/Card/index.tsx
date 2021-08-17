@@ -30,8 +30,7 @@ type CardProps = {
 function Card(props: CardProps) {
   const { task, user, modal } = props;
 
-  const url = process.env.REACT_APP_URL_IMAGE;
-  const userImg = user?.avatar ? `${url + user.avatar}` : avatarImg;
+  const userImg = user?.avatar ? user.avatar : avatarImg;
 
   return (
     <>

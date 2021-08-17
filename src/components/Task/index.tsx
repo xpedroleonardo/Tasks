@@ -33,8 +33,7 @@ function Task(props: TaskProps) {
     });
   }, []);
 
-  const url = process.env.REACT_APP_URL_IMAGE;
-  const userImg = user?.avatar ? `${url + user.avatar}` : avatarImg;
+  const userImg = user?.avatar ? user.avatar : avatarImg;
 
   const titleExample = "Título";
   const descriptionExample = `Lorem, ipsum dolor sit amet consectetur adipisicing elit.

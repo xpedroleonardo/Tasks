@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import New from "./pages/New";
@@ -11,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
+      <Toaster position="top-center" reverseOrder={false} />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/new" component={New} />

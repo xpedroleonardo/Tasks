@@ -1,5 +1,6 @@
-import { useState, useEffect, FormEvent } from "react";
+import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
+import { useState, useEffect, FormEvent } from "react";
 import { Main, Group } from "./styles";
 
 import Header from "../../components/Header";
@@ -17,8 +18,7 @@ function Profile() {
   const [image, setImage] = useState("");
   const [user, setUser] = useState<ProfileProps>();
 
-  const url = process.env.REACT_APP_URL_IMAGE;
-  const ImageProfile = user?.avatar ? `${url + user.avatar}` : avatarImg;
+  const ImageProfile = user?.avatar ? user.avatar : avatarImg;
 
   useEffect(() => {
     api.get("/user").then((res) => {
@@ -54,7 +54,15 @@ function Profile() {
 
     data.append("avatar", imageForm);
 
-    await api.put("/update/user", data).then(() => push("/"));
+    await api.put("/update/user", data).then((res) => {
+      const { error } = res.data;
+
+      if (error) {
+        toast.error(error);
+      } else {
+        push("/");
+      }
+    });
   }
 
   return (
@@ -81,6 +89,7 @@ function Profile() {
                   type="text"
                   name="name"
                   id="name"
+                  maxLength={25}
                   required
                   placeholder="Digite seu nome..."
                   defaultValue={user?.name ? user.name : ""}

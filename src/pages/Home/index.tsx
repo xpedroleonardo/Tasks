@@ -55,8 +55,7 @@ function Home() {
     });
   }, [open]);
 
-  const url = process.env.REACT_APP_URL_IMAGE;
-  const userImg = user?.avatar ? `${url + user.avatar}` : avatarImg;
+  const userImg = user?.avatar ? user.avatar : avatarImg;
 
   return (
     <>
@@ -102,7 +101,7 @@ function Home() {
                 );
               })
             ) : (
-              <Empty>
+              <Empty className="animate-up">
                 <img src={emptyImg} alt="Sem tasks" draggable="false" />
                 <div className="empty-text">
                   <h2>Sem Tasks</h2>
