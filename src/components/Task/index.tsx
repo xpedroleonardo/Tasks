@@ -69,7 +69,7 @@ function Task(props: TaskProps) {
       <Main>
         <form onSubmit={handleSubmitForm} autoComplete="off">
           <fieldset>
-            <legend>Dados da Tarefa</legend>
+            <legend>Dados da Task</legend>
 
             <div className="separator"></div>
 

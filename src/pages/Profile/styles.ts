@@ -61,6 +61,7 @@ export const Group = styled.div`
     font-weight: 500;
 
     &#image {
+      cursor: pointer;
       font-weight: normal;
       display: flex;
       align-items: center;

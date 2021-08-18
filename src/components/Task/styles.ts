@@ -101,6 +101,14 @@ export const Group = styled.div`
       margin-bottom: 20px;
     }
   }
+
+  @media (max-width: 730px) {
+    input,
+    textarea,
+    label {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const Collapse = styled.section`

@@ -45,7 +45,20 @@ export const GlobalStyle = createGlobalStyle`
   a,
   input,
   textarea,
-  button,
+  button{
+    outline: none;
+
+    :focus {
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+  }
+
+  a,button {
+    :focus {
+      box-shadow: 0 0 0 2px #759EFF;
+    }
+  }
+
   details,
   summary {
     outline: none;

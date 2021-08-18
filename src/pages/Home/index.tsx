@@ -48,12 +48,16 @@ function Home() {
   }
 
   useEffect(() => {
+    if (!user) {
+      api.post("/create/user").then();
+    }
+
     api.get("/").then((response) => {
       const { user, tasks } = response.data;
       setUser(user);
       setTasks(tasks);
     });
-  }, [open]);
+  }, [open, user]);
 
   const userImg = user?.avatar ? user.avatar : avatarImg;
 
