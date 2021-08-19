@@ -1,6 +1,5 @@
-<p align="center">
-  <img alt="Tasks Logo" src="./src/assets/images/LOGO.png" width="100px">
-</p>
+<h1 align="center">Tasks</h1>
+
 
 <h1 align="center">
   <img alt="Tasks HomePage" src="./src/assets/images/README.png" />
