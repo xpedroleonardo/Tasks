@@ -42,7 +42,7 @@ function Modal(props: ModalProps) {
             <h3>Excluir Task</h3>
 
             <p>
-              Quer mesmo excluir esse job? <br />
+              Quer mesmo excluir essa task? <br />
               Ele será apagado para sempre.
             </p>
           </>
